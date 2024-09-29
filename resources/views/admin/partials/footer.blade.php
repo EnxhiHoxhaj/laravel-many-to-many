@@ -1,0 +1,1 @@
+<div>Sono footer</div>
