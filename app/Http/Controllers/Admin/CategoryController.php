@@ -48,9 +48,9 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Category $category)
     {
-        //
+        return view('admin.categories.index', compact('category'));
     }
 
     /**
@@ -58,7 +58,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        dd($request->all());
+        $data = $request->all();
+        if($data['name'] === $category->name){
+            $data ['slug']= $category->slug;
+        } else {
+            $data['slug'] = Helper::generateSlug($data['name'], Category::class);
+        }
+        $category->update($data);
+        return redirect()->route('admin.categories.index', $category);
     }
 
     /**

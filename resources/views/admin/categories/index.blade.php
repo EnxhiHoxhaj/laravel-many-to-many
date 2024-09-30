@@ -49,7 +49,7 @@
 
     <script>
         function editCategorySubmit(id) {
-            const form = document.getElementById('form-edit-${id}')
+            const form = document.getElementById(`form-edit-${id}`)
             form.submit();
         }
     </script>
