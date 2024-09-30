@@ -24,7 +24,7 @@ Route::middleware (['auth', 'verified'])->prefix('admin')->name('admin.')->group
     Route::get('/', [DashboardController::class, 'index'])->name('home');
     Route::get('catrgory-post',[ CategoryController::class, 'categoryPost'])->name('categoryPost');
     Route::resource('posts', PostController::class);
-    Route::resource('categories', CategoryController::class);
+    Route::resource('categories', CategoryController::class)->except(['show', 'edit', 'create']);
 });
 
 
