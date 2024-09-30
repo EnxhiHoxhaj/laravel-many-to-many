@@ -31,10 +31,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $data= $request->all();
-        $data['slug'] = Helper::generateSlug($data ['name'], Category::class);
-        $category= Category::create($data);
-        return redirect()->route('admin.categories.index');
+        $exists= Category::where('name', $request->name)->first();
+        if(!$exists){
+            $data= $request->all();
+            $data['slug'] = Helper::generateSlug($data ['name'], Category::class);
+            $category= Category::create($data);
+            return redirect()->route('admin.categories.index')->with('succes', 'Nuova categoria inserita correttamente');
+        }else{
+            return redirect()->route('admin.categories.index')->with('error', 'Categoria già presente nell\'elenco');
+        }
+
     }
 
     /**

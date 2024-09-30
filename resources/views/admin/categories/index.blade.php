@@ -7,6 +7,16 @@
                 {{ session('delete') }}
             </div>
         @endif
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+        @if (session('succes'))
+            <div class="alert alert-success">
+                {{ session('succes') }}
+            </div>
+        @endif
 
         <h2 class="n-txt">Gestione Categorie</h2>
         <form action="{{ route('admin.categories.store') }}" method="POST">
