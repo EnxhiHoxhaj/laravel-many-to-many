@@ -22,4 +22,8 @@ class TagsTableSeeder extends Seeder
             $new_tag->save();
         }
     }
+    public function posts()
+    {
+        return $this->belongsToMany(Post::class);
+    }
 }
