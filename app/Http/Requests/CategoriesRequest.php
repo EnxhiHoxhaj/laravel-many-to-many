@@ -22,7 +22,7 @@ class CategoriesRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>'required|min:2|max:20'
+            'name'=>'required|unique:categories,name|min:2|max:20'
         ];
     }
     public function messages(): array
@@ -31,6 +31,7 @@ class CategoriesRequest extends FormRequest
             'name.required'=>'Il campo nome è obbligatorio',
             'name.min'=>'Il nome deve avere contenere almeno :min caratteri',
             'name.max'=>'Il nome deve avere contenere al massimo :max caratteri',
+            'name.unique'=>'Categoria già presente',
         ];
 
     }

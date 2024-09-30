@@ -63,7 +63,7 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(CategoriesRequest  $request, Category $category)
     {
         $data = $request->all();
         if($data['name'] === $category->name){
