@@ -30,7 +30,7 @@
 
                         </td>
                         <td>
-                            <button class="btn btn-success add my-4" type="submit"
+                            <button class="btn btn-success add" type="submit"
                                 onclick="editCategorySubmit({{ $category->id }})">Aggiorna
                             </button>
                         </td>
@@ -39,7 +39,6 @@
                                 'route' => route('admin.categories.destroy', $category),
                                 'message' => 'Confermi l\'eliminazione del post: {{ $category->name }}?',
                             ])
-                            ELIMINA
                         </td>
                     </tr>
                 @endforeach
