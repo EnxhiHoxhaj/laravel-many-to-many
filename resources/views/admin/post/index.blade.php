@@ -15,7 +15,7 @@
                     <th scope="col">Titolo</th>
                     <th scope="col">Contenuto</th>
                     <th scope="col">Categoria</th>
-                    <th scope="col">Visite</th>
+                    <th scope="col">Tags</th>
                     <th scope="col">Creato il</th>
                     <th scope="col">Visite</th>
                     <th scope="col">Like</th>
@@ -32,11 +32,17 @@
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->content }}</td>
                         <td>{{ $post->category?->name }}</td>
+                        <td>
+                            @forelse ($post->tags as $tag)
+                                <span class="badge text-bg-info">{{ $tag->name }}</span>
+                            @empty
+                                -
+                            @endforelse
+                        </td>
                         <td>{{ $post->created_at->format('d/m/Y') }}</td>
                         <td>{{ $post->visit }}</td>
                         <td>{{ $post->positive_votes }}</td>
                         <td>{{ $post->negative_votes }}</td>
-                        <td>{{ $post->created_at }}</td>
                         <td><a class="bot" href="{{ route('admin.posts.show', $post->id) }}"><i
                                     class="fa-regular fa-eye"></i></a></td>
                         <td><a class="bot" href="{{ route('admin.posts.edit', $post) }}"><i

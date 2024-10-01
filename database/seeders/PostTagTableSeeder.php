@@ -14,11 +14,10 @@ class PostTagTableSeeder extends Seeder
      */
     public function run(): void
     {
-        for($i = 0; $i < 10; $i++){
+        for($i = 0; $i < 150; $i++){
             $post = Post::inRandomOrder()->first();
             $tag_id = Tag::inRandomOrder()->first()->id;
             $post->tags()->attach($tag_id);
-            dd($tag_id);
         }
     }
 }
